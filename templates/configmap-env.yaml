@@ -41,6 +41,12 @@ data:
   REDIS_HOST: {{ required "When the redis chart is disabled .Values.redis.hostname is required" .Values.redis.hostname }}
   {{- end }}
   REDIS_PORT: {{ .Values.redis.port | default "6379" | quote }}
+  {{- with .Values.redis.db }}
+  REDIS_DB: {{ . }}
+  {{- end }}
+  {{- with .Values.redis.namespace }}
+  REDIS_NAMESPACE: {{ . }}
+  {{- end }}
   {{- if .Values.mastodon.s3.enabled }}
   S3_BUCKET: {{ .Values.mastodon.s3.bucket }}
   S3_ENABLED: "true"
