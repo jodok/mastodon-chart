@@ -20,6 +20,11 @@ data:
   ES_ENABLED: "true"
   ES_HOST: {{ template "mastodon.elasticsearch.fullname" . }}-master-hl
   ES_PORT: "9200"
+  {{- else }}
+  {{- with .Values.elasticsearch.host }}
+  ES_HOST: {{ . }}
+  {{- end }}
+  ES_PORT: {{ .Values.elasticsearch.port | default "9200" | quote }}
   {{- end }}
   LOCAL_DOMAIN: {{ .Values.mastodon.local_domain }}
   {{- with .Values.mastodon.web_domain }}

@@ -227,7 +227,11 @@ elasticsearch:
   # RAILS_ENV=production bundle exec rake chewy:sync
   # (https://docs.joinmastodon.org/admin/optional/elasticsearch/)
   # @ignored
+  # -- disable if you want to use an existing elasticsearch instance; in which case the values
+  # below must match those of that external elasticsearch instance
   enabled: true
+  # host: preexisting-elasticsearch
+  # port: 9200
   # @ignored
   image:
     tag: 7

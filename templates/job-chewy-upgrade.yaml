@@ -1,4 +1,4 @@
-{{- if .Values.elasticsearch.enabled -}}
+{{- if or (.Values.elasticsearch.enabled) (.Values.elasticsearch.host) -}}
 apiVersion: batch/v1
 kind: Job
 metadata:
